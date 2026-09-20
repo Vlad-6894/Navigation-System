@@ -1,7 +1,7 @@
 package log_core_logger
 
 import (
-	log_core_logger_config "Log_service/core/logger/config"
+	log_core_logger_config "Log_service/internal/core/logger/config"
 	"fmt"
 	"os"
 	"path/filepath"
