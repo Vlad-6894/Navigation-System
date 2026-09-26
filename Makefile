@@ -9,6 +9,18 @@ start-postgres:
 finish-postgres:
 	@docker compose down navigation-postgres-db
 
+start-redis:
+	@docker compose up -d navigation-redis
+
+finish-redis:
+	@docker compose down navigation-redis
+
+start-kafka:
+	@docker compose up -d navigation-kafka
+
+finish-kafka:
+	@docker compose down navigation-kafka
+
 cleanup-postgres:
 	@read -p "Очистить pg_data? ВНИМАНИЕ! Опасность утери данных! [y/N]: " choice; \
 	if [ "$$choice" = "y" ] || [ "$$choice" = "Y" ]; then \
@@ -44,3 +56,10 @@ migrate-up:
 
 migrate-down:
 	@make migrate-action action=down
+
+
+start-log-service:
+	@docker compose up -d log --build
+
+finish-log-service:
+	@docker compose down log

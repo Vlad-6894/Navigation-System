@@ -1,5 +1,33 @@
 services:
 
+  log:
+    build:
+      context: ${PROJECT_ROOT}
+      dockerfile: ${PROJECT_ROOT}/services/Log/cmd/Dockerfile
+    container_name: log-service
+    environment:
+      - LOGGER_AUTH_LEVEL=${LOGGER_LEVEL}
+      - LOGGER_AUTH_FOLDER=/app/out/logs/auth
+      - LOGGER_GEO_LEVEL=${LOGGER_LEVEL}
+      - LOGGER_GEO_FOLDER=/app/out/logs/geo
+      - LOGGER_ROOM_LEVEL=${LOGGER_LEVEL}
+      - LOGGER_ROOM_FOLDER=/app/out/logs/rooms
+      - LOG_REDIS_HOST=navigation-redis
+      - LOG_REDIS_PORT=6379
+      - LOG_REDIS_PASSWORD=${REDIS_PASSWORD}
+      - LOG_REDIS_TIMEOUT=${REDIS_TIMEOUT}
+      - LOG_KAFKA_CONSUMER_ADDRESS=${KAFKA_ADDRESS}
+      - LOG_KAFKA_CONSUMER_AUTH_TOPIC=${LOG_AUTH_TOPIC}
+      - LOG_KAFKA_CONSUMER_AUTH_GROUP_ID=${LOG_AUTH_GROUP_ID}
+      - LOG_KAFKA_CONSUMER_GEO_TOPIC=${LOG_AUTH_TOPIC}
+      - LOG_KAFKA_CONSUMER_GEO_GROUP_ID=${LOG_AUTH_GROUP_ID}
+      - LOG_KAFKA_CONSUMER_ROOMS_TOPIC=${LOG_AUTH_TOPIC}
+      - LOG_KAFKA_CONSUMER_ROOMS_GROUP_ID=${LOG_AUTH_GROUP_ID}
+    volumes:
+      - ${PROJECT_ROOT}/out/logs:/app/out/logs
+    ports:
+      - "7070:7070"
+
   navigation-postgres-db:
     image: postgres:18.1-bookworm
     container_name: db
