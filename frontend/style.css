@@ -1,0 +1,173 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: #0f172a; 
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* ЛЕВАЯ ПАНЕЛЬ: Меню этажей */
+.sidebar {
+    width: 200px;
+    background-color: #020617;
+    color: white;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    border-right: 1px solid #1e293b;
+    flex-shrink: 0;
+}
+
+.sidebar h2 {
+    margin-top: 0;
+    font-size: 18px;
+    border-bottom: 1px solid #1e293b;
+    padding-bottom: 12px;
+}
+
+.floor-btn {
+    padding: 12px;
+    background-color: #0f172a;
+    color: #94a3b8;
+    border: 1px solid #1e293b;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+.floor-btn.active, .floor-btn:hover {
+    background-color: #3b82f6;
+    color: white;
+    border-color: #60a5fa;
+}
+
+/* ЦЕНТРАЛЬНАЯ ПАНЕЛЬ: Контейнер для карты */
+.map-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    height: 100vh;
+    background-color: #0f172a;
+}
+
+svg {
+    max-width: 90%;
+    max-height: 80vh;
+    width: auto;
+    height: auto;
+    background-color: #ffffff !important;
+    box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.4);
+    border-radius: 8px;
+    margin: auto 40px; 
+}
+
+
+/* ПРАВАЯ ПАНЕЛЬ: Легенда карты */
+.legend-panel {
+    width: 240px;
+    background-color: #020617;
+    color: white;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    border-left: 1px solid #1e293b;
+    flex-shrink: 0;
+}
+
+.legend-panel h3 {
+    margin-top: 0;
+    font-size: 16px;
+    border-bottom: 1px solid #1e293b;
+    padding-bottom: 12px;
+    color: #f8fafc;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.legend-color {
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    border: 2px solid #020617;
+    flex-shrink: 0;
+    display: inline-block;
+}
+
+.legend-text {
+    font-size: 14px;
+    color: #94a3b8;
+}
+
+
+/* 🧱 1. ГЛОБАЛЬНЫЙ СЛОЙ СТЕН И КОРИДОРОВ */
+/* По умолчанию ВСЕ теги path на карте — это просто мертвый пол. 
+   Мышь полностью «пролетает» сквозь них, не ломая наведение комнат! */
+svg path {
+    fill: #f1f5f9 !important;       /* Серый пол коридоров */
+    stroke: #000000 !important;     /* Черные толстые стены */
+    stroke-width: 3px !important;
+    pointer-events: none !important; /* 💥 ГЛАВНАЯ МАГИЯ: отключаем реакцию на мышь для коридора */
+}
+
+/* 🏢 2. БАЗОВЫЙ СТИЛЬ ДЛЯ СТАНДАРТНЫХ КАБИНЕТОВ (Прямоугольники) */
+svg rect {
+    fill: #ffffff !important;       /* Белые аккуратные классы */
+    stroke: #000000 !important;     
+    stroke-width: 3px !important;
+    opacity: 1 !important;
+    pointer-events: auto !important; /* Включаем реакцию мыши */
+    transition: fill 0.15s ease !important;
+}
+
+
+/* 🆕 3. ИСПРАВЛЯЕМ КРИВЫЕ КАБИНЕТЫ, ЛЕСТНИЦЫ И ЛИФТЫ */
+/* Принудительно включаем белый цвет и РАЗРЕШАЕМ реагировать на мышь 
+   абсолютно всем элементам, у которых в ID нет слова corridor или walls! */
+svg rect, 
+svg path:not([id*="corridor"]):not([id*="walls"]):not([id^="Vector"]) {
+    fill: #ffffff !important;        /* Они гарантированно побелеют! */
+    pointer-events: auto !important; /* 💥 Они пробьют слой коридора и будут ловить мышь! */
+}
+
+
+/* 💥 4. ТОТАЛЬНОЕ ИДЕАЛЬНОЕ НАВЕДЕНИЕ СИНИМ ЦВЕТОМ */
+/* Теперь при наведении синеет абсолютно любая комната, независимо от ее формы в Figma! */
+svg rect:hover, 
+svg path:not([id*="corridor"]):not([id*="walls"]):not([id^="Vector"]):hover {
+    fill: #3b82f6 !important;       /* Сочный информационный синий цвет */
+    cursor: pointer;
+}
+
+
+/* 📍 ТОЧКИ QR-КОДОВ */
+svg circle {
+    fill: #64748b !important;
+    stroke: #000000 !important;
+    stroke-width: 2px !important;
+    r: 4.5px !important;
+    pointer-events: auto !important;
+}
+svg circle:hover {
+    fill: #3b82f6 !important;
+    stroke: #ffffff !important;
+}
+
+/* Квадратики в легенде (оставляем рабочими) */
+.color-classroom { background-color: #ffffff !important; border-color: #cbd5e1 !important; }
+.color-stairs { background-color: #3b82f6 !important; border-color: #2563eb !important; }
+.color-wc { background-color: #ffe4e6 !important; border-color: #fecdd3 !important; }
+.color-special { background-color: #fef3c7 !important; border-color: #fde68a !important; }
+.color-corridor { background-color: #f1f5f9 !important; border-color: #cbd5e1 !important; }
