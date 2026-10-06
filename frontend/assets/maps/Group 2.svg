@@ -24,7 +24,7 @@
 <rect id="2021" x="312.5" y="321.5" width="62" height="38" stroke="black"/>
 <rect id="2018" x="268.5" y="321.5" width="43" height="38" stroke="black"/>
 <rect id="20542" x="219.5" y="259.5" width="46" height="61" stroke="black"/>
-<rect id="2047" x="80.5" y="321.5" width="100" height="159" stroke="black"/>
+<rect id="2047" x="80.5" y="321.5" width="100" height="160" stroke="black"/>
 <rect id="2028" x="80.5" y="515.5" width="100" height="163" stroke="black"/>
 <rect id="20541" x="219.5" y="239.5" width="46" height="19" stroke="black"/>
 <rect id="20543" x="219.5" y="149.5" width="46" height="89" stroke="black"/>
@@ -70,7 +70,7 @@
 <path id="20360" d="M180.553 482.5V484.798H192.5V498.499L171.504 498.467L171.657 482.5H180.553Z" stroke="black"/>
 <path id="2041" d="M191.725 421.5V442.5H204.5V470.5H181.5V421.5H191.725Z" stroke="black"/>
 <path id="2029" d="M192.5 593.5V614.5H205.5V646.5H181.5V593.5H192.5Z" stroke="black"/>
-<path id="2059" d="M241.5 321.5V344.499H232.356L232.351 344.993L232.178 359.5H225.5V321.5H241.5Z" stroke="black"/>
+<path id="2059" d="M241.5 321.5V344.499H232.5V359.5H219.5V321.5H241.5Z" stroke="black"/>
 <rect id="2062" x="258.5" y="321.5" width="9" height="11" stroke="black"/>
 <path id="2060" d="M257.5 321.5V359.5H251.366V344.42H242.5V321.5H257.5Z" stroke="black"/>
 <rect id="2015" x="414.5" y="289.5" width="37" height="46" stroke="black"/>
@@ -101,6 +101,104 @@
 <circle id="2081" cx="314" cy="104" r="5" fill="#FE0000"/>
 <circle id="2080" cx="138" cy="120" r="5" fill="#FE0000"/>
 <circle id="2077" cx="405" cy="268" r="5" fill="#FE0000"/>
+<rect id="Rectangle 1" x="112" y="91" width="6" height="3" fill="#F1F5F9"/>
+<rect id="Rectangle 21" x="85" y="148" width="6" height="3" fill="#F1F5F9"/>
+<rect id="Rectangle 22" x="193" y="148" width="6" height="3" fill="#F1F5F9"/>
+<rect id="Rectangle 2" x="162" y="92" width="6" height="3" fill="#F1F5F9"/>
+<rect id="Rectangle 3" x="185" y="92" width="6" height="3" fill="#F1F5F9"/>
+<rect id="Rectangle 4" x="198" y="92" width="6" height="3" fill="#F1F5F9"/>
+<rect id="Rectangle 5" x="242" y="92" width="6" height="3" fill="#F1F5F9"/>
+<rect id="Rectangle 6" x="290" y="92" width="6" height="3" fill="#F1F5F9"/>
+<rect id="Rectangle 7" x="335" y="92" width="6" height="3" fill="#F1F5F9"/>
+<rect id="Rectangle 8" x="382" y="92" width="6" height="3" fill="#F1F5F9"/>
+<rect id="Rectangle 14" x="318" y="109" width="6" height="3" fill="#F1F5F9"/>
+<rect id="Rectangle 15" x="272" y="109" width="6" height="3" fill="#F1F5F9"/>
+<rect id="Rectangle 16" x="257" y="109" width="6" height="3" fill="#F1F5F9"/>
+<rect id="Rectangle 17" x="233" y="109" width="6" height="3" fill="#F1F5F9"/>
+<rect id="Rectangle 18" x="214" y="115" width="3" height="6" fill="#F1F5F9"/>
+<rect id="Rectangle 19" x="214" y="129" width="3" height="6" fill="#F1F5F9"/>
+<rect id="Rectangle 20" x="214" y="141" width="3" height="6" fill="#F1F5F9"/>
+<rect id="Rectangle 23" x="199" y="210" width="3" height="6" fill="#F1F5F9"/>
+<rect id="Rectangle 30" x="218" y="187" width="3" height="6" fill="#F1F5F9"/>
+<rect id="Rectangle 31" x="218" y="251" width="3" height="6" fill="#F1F5F9"/>
+<rect id="Rectangle 32" x="218" y="312" width="3" height="6" fill="#F1F5F9"/>
+<rect id="Rectangle 36" x="257" y="325" width="3" height="6" fill="white"/>
+<rect id="Rectangle 37" x="257" y="335" width="3" height="6" fill="white"/>
+<rect id="Rectangle 46" x="374" y="351" width="3" height="6" fill="white"/>
+<rect id="Rectangle 49" x="413" y="372" width="3" height="6" fill="#F1F5F9"/>
+<rect id="Rectangle 54" x="413" y="419" width="3" height="6" fill="#F1F5F9"/>
+<rect id="Rectangle 55" x="413" y="466" width="3" height="6" fill="#F1F5F9"/>
+<rect id="Rectangle 56" x="413" y="515" width="3" height="6" fill="#F1F5F9"/>
+<rect id="Rectangle 57" x="413" y="532" width="3" height="6" fill="#F1F5F9"/>
+<rect id="Rectangle 58" x="413" y="600" width="3" height="6" fill="#F1F5F9"/>
+<rect id="Rectangle 59" x="413" y="634" width="3" height="6" fill="#F1F5F9"/>
+<rect id="Rectangle 60" x="413" y="669" width="3" height="6" fill="#F1F5F9"/>
+<rect id="Rectangle 50" x="413" y="325" width="3" height="6" fill="#F1F5F9"/>
+<rect id="Rectangle 51" x="413" y="278" width="3" height="6" fill="#F1F5F9"/>
+<rect id="Rectangle 52" x="413" y="230" width="3" height="6" fill="#F1F5F9"/>
+<rect id="Rectangle 53" x="413" y="187" width="3" height="6" fill="#F1F5F9"/>
+<rect id="Rectangle 47" x="322" y="382" width="3" height="6" fill="white"/>
+<rect id="Rectangle 40" x="265" y="386" width="3" height="6" fill="#F1F5F9"/>
+<rect id="Rectangle 41" x="265" y="401" width="3" height="6" fill="#F1F5F9"/>
+<rect id="Rectangle 33" x="225" y="358" width="6" height="3" fill="#F1F5F9"/>
+<rect id="Rectangle 62" x="184" y="355" width="6" height="3" fill="white"/>
+<rect id="Rectangle 64" x="184" y="403" width="6" height="3" fill="white"/>
+<rect id="Rectangle 67" x="184" y="420" width="6" height="3" fill="white"/>
+<rect id="Rectangle 69" x="184" y="469" width="6" height="3" fill="white"/>
+<rect id="Rectangle 70" x="173" y="480" width="6" height="3" fill="white"/>
+<rect id="Rectangle 79" x="173" y="513" width="6" height="3" fill="white"/>
+<rect id="Rectangle 80" x="184" y="524" width="6" height="3" fill="white"/>
+<rect id="Rectangle 83" x="184" y="574" width="6" height="3" fill="white"/>
+<rect id="Rectangle 85" x="184" y="592" width="6" height="3" fill="white"/>
+<rect id="Rectangle 88" x="190" y="645" width="6" height="3" fill="white"/>
+<rect id="Rectangle 90" x="224" y="635" width="6" height="3" fill="#F1F5F9"/>
+<rect id="Rectangle 91" x="237" y="635" width="6" height="3" fill="#F1F5F9"/>
+<rect id="Rectangle 93" x="257" y="635" width="6" height="3" fill="#F1F5F9"/>
+<rect id="Rectangle 95" x="274" y="635" width="6" height="3" fill="#F1F5F9"/>
+<rect id="Rectangle 96" x="306" y="635" width="6" height="3" fill="#F1F5F9"/>
+<rect id="Rectangle 97" x="372" y="635" width="6" height="3" fill="#F1F5F9"/>
+<rect id="Rectangle 94" x="257" y="664" width="6" height="3" fill="white"/>
+<rect id="Rectangle 92" x="249" y="635" width="5" height="3" fill="#F1F5F9"/>
+<rect id="Rectangle 72" x="133" y="480" width="6" height="3" fill="white"/>
+<rect id="Rectangle 74" x="82" y="513" width="6" height="3" fill="white"/>
+<rect id="Rectangle 77" x="102" y="513" width="6" height="3" fill="white"/>
+<rect id="Rectangle 73" x="82" y="480" width="6" height="3" fill="white"/>
+<rect id="Rectangle 71" x="150" y="480" width="12" height="3" fill="white"/>
+<rect id="Rectangle 78" x="150" y="513" width="12" height="3" fill="white"/>
+<rect id="Rectangle 34" x="240" y="358" width="6" height="3" fill="#F1F5F9"/>
+<rect id="Rectangle 38" x="260" y="358" width="6" height="3" fill="#F1F5F9"/>
+<rect id="Rectangle 39" x="301" y="358" width="6" height="3" fill="#F1F5F9"/>
+<rect id="Rectangle 44" x="353" y="358" width="6" height="3" fill="#F1F5F9"/>
+<rect id="Rectangle 45" x="382" y="358" width="6" height="3" fill="#F1F5F9"/>
+<rect id="Rectangle 43" x="316" y="378" width="6" height="3" fill="#F1F5F9"/>
+<rect id="Rectangle 48" x="346" y="378" width="6" height="3" fill="#F1F5F9"/>
+<rect id="Rectangle 42" x="299" y="378" width="6" height="3" fill="#F1F5F9"/>
+<rect id="Rectangle 35" x="252" y="358" width="5" height="3" fill="#F1F5F9"/>
+<rect id="Rectangle 24" x="199" y="273" width="3" height="6" fill="#F1F5F9"/>
+<rect id="Rectangle 26" x="177" y="290" width="3" height="6" fill="white"/>
+<rect id="Rectangle 29" x="177" y="300" width="3" height="6" fill="white"/>
+<rect id="Rectangle 27" x="103" y="297" width="3" height="6" fill="white"/>
+<rect id="Rectangle 28" x="103" y="307" width="3" height="6" fill="white"/>
+<rect id="Rectangle 25" x="203" y="314" width="3" height="6" fill="#F1F5F9"/>
+<rect id="Rectangle 61" x="179" y="332" width="3" height="6" fill="#F1F5F9"/>
+<rect id="Rectangle 63" x="190" y="396" width="3" height="6" fill="white"/>
+<rect id="Rectangle 65" x="180" y="411" width="3" height="6" fill="white"/>
+<rect id="Rectangle 98" x="283" y="386" width="3" height="6" fill="white"/>
+<rect id="Rectangle 75" x="79" y="485" width="3" height="12" fill="#F1F5F9"/>
+<rect id="Rectangle 66" x="203" y="411" width="3" height="6" fill="#F1F5F9"/>
+<rect id="Rectangle 76" x="203" y="496" width="3" height="6" fill="#F1F5F9"/>
+<rect id="Rectangle 81" x="204" y="530" width="3" height="6" fill="#F1F5F9"/>
+<rect id="Rectangle 84" x="204" y="582" width="3" height="6" fill="#F1F5F9"/>
+<rect id="Rectangle 87" x="192" y="596" width="3" height="6" fill="white"/>
+<rect id="Rectangle 86" x="180" y="582" width="3" height="6" fill="white"/>
+<rect id="Rectangle 89" x="180" y="669" width="3" height="6" fill="#F1F5F9"/>
+<rect id="Rectangle 82" x="191" y="568" width="3" height="6" fill="white"/>
+<rect id="Rectangle 68" x="191" y="423" width="3" height="6" fill="white"/>
+<rect id="Rectangle 12" x="384" y="120" width="6" height="3" fill="#F1F5F9"/>
+<rect id="Rectangle 13" x="365" y="114" width="6" height="3" fill="#F1F5F9"/>
+<rect id="Rectangle 9" x="413" y="89" width="3" height="6" fill="#F1F5F9"/>
+<rect id="Rectangle 10" x="413" y="119" width="3" height="6" fill="#F1F5F9"/>
+<rect id="Rectangle 11" x="393" y="132" width="3" height="6" fill="#F1F5F9"/>
 </g>
 <defs>
 <pattern id="pattern0_17_60" patternContentUnits="objectBoundingBox" width="1" height="1">

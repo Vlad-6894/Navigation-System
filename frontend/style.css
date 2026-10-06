@@ -1,3 +1,6 @@
+/* ==========================================================================
+   🌐 1. ГЛОБАЛЬНЫЕ НАСТРОЙКИ ЭКРАНА И ФОНА
+   ========================================================================== */
 * {
     box-sizing: border-box;
 }
@@ -6,7 +9,7 @@ body {
     display: flex;
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    background-color: #0f172a; 
+    background-color: #0f172a; /* Глубокий темно-синий фон страницы */
     height: 100vh;
     overflow: hidden;
 }
@@ -55,7 +58,6 @@ body {
     align-items: center;
     padding: 20px;
     height: 100vh;
-    background-color: #0f172a;
 }
 
 svg {
@@ -69,8 +71,93 @@ svg {
     margin: auto 40px; 
 }
 
+/* ==========================================================================
+   🧱 2. ЖЕСТКИЕ ТОЛСТЫЕ ЧЕРНЫЕ СТЕНЫ ШКОЛЫ
+   ========================================================================== */
+svg * {
+    stroke: #000000 !important;     /* 💥 ЖЕЛЕЗНЫЕ ЧЕРНЫЕ СТЕНЫ */
+    stroke-width: 3px !important;   /* 💥 ТОЛСТЫЕ И ЧЕТКИЕ ЛИНИИ */
+    stroke-linejoin: round !important;
+    stroke-linecap: round !important;
+    paint-order: stroke fill !important;
+}
 
-/* ПРАВАЯ ПАНЕЛЬ: Легенда карты */
+/* Пол коридоров и улицы (Твои большие path) */
+svg path {
+    fill: #f1f5f9 !important;       /* Мягкий серый цвет коридоров */
+}
+
+/* Маленькие накладки дверей (Стираем им обводку, чтобы не было черных кубиков) */
+svg rect:not([id]) {
+    stroke: none !important;
+    pointer-events: none !important;
+}
+
+/* Точки QR-кодов */
+svg circle {
+    fill: #64748b !important;
+    stroke: #000000 !important;
+    stroke-width: 2px !important;
+    r: 5px !important;
+    pointer-events: auto !important;
+}
+
+/* ==========================================================================
+   🎨 3. ЦВЕТОВОЕ ЗОНИРОВАНИЕ КАБИНЕТОВ ПО ЧИСЛОВЫМ ID
+   ========================================================================== */
+
+/* 🟢 БАЗОВЫЙ ЦВЕТ: Все стандартные учебные классы (Изначально чисто белые) */
+svg rect {
+    fill: #ffffff !important; 
+    pointer-events: auto !important;
+    transition: fill 0.15s ease !important;
+}
+
+/* 🟣 ЛЕСТНИЦЫ И ЛИФТЫ (Спокойный приглушенно-фиолетовый)
+   ⚠️ Впиши сюда через запятую числовые ID своих лестниц и лифтов, добавляя перед ними #\3 */
+#\32 1231, #\32 1232, #\32 1233, #\32 089, #\32 087, #\32 086, #\32 085, #\32 084, #\32 083, #\32 091, #\32 092 { 
+    fill: #f3e8ff !important; 
+    pointer-events: auto !important; /* Разрешаем им светиться! */
+}
+
+/* 🔴 САНУЗЛЫ / ТУАЛЕТЫ (Пастельно-розовый)
+   ⚠️ Впиши сюда через запятую числовые ID своих туалетов */
+#\32 066, #\32 065, #\32 067, #\32 064, #\32 057, #\32 055, #\32 056, #\32 031, #\32 033, #\32 0361, #\32 0351, #\32 043, #\32 045, #\32 063, #\32 060, #\32 059, #\32 058, #\32 061, #\32 062 { 
+    fill: #ffe4e6 !important; 
+}
+
+/* 🟡 СТОЛОВАЯ / СПОРТЗАЛ / БОЛЬШИЕ ЗАЛЫ (Золотисто-оранжевый)
+   ⚠️ Впиши сюда через запятую числовые ID больших особых помещений */
+#\31 105, #\32 028, #\32 047 { 
+    fill: #fef3c7 !important; 
+}
+
+/* ==========================================================================
+   💥 4. ИДЕАЛЬНАЯ СИНЯЯ ПОДСВЕТКА ДЛЯ ВСЕХ ТИПОВ КАБИНЕТОВ
+   ========================================================================== */
+/* Теперь при наведении мышки синеет АБСОЛЮТНО любой кабинет и лестница!
+   ⚠️ Скопируй сюда точно такой же список особых ID, как в блоках выше */
+
+/* 2. НАСТРОЙКА КОРЫДОРА (По-прежнему не мешает мышке) */
+/* Мы отключаем pointer-events только для фонового серого коридора */
+
+/* 3. УНИВЕРСАЛЬНАЯ ПОДВЕТКА ДЛЯ ВСЕГО БЕЗ ID! */
+/* Теперь АБСОЛЮТНО любая замкнутая фигура (и прямоугольник rect, и кривое перо path) 
+   при наведении мышки гарантированно и сочно загорится синим цветом! */
+svg *:hover,
+svg rect:hover,
+svg path:hover,
+svg circle:hover, 
+#\32 1231:hover, #\32 1232:hover, #\32 1233:hover, #\32 089:hover, #\32 087:hover, #\32 086:hover, #\32 085:hover, #\32 084:hover, #\32 083:hover, #\32 091:hover, #\32 092:hover
+#\32 066:hover, #\32 065:hover, #\32 067:hover, #\32 064:hover, #\32 057:hover, #\32 055:hover, #\32 056:hover, #\32 031:hover, #\32 033:hover, #\32 0361:hover, #\32 0351:hover, #\32 043:hover, #\32 045:hover, #\32 063:hover, #\32 060:hover, #\32 059:hover, #\32 058:hover, #\32 061:hover, #\32 062:hover 
+#\31 105:hover, #\32 028:hover, #\32 047:hover {
+    fill: #1d4ed8 !important;   /* Мы взяли сочный, глубокий темно-синий цвет, чтобы он перебивал всё! */
+    cursor: pointer !important;
+}
+
+/* ==========================================================================
+   📊 5. ПРАВАЯ ПАНЕЛЬ: КРАСИВАЯ ЛЕГЕНДА С ЦВЕТАМИ
+   ========================================================================== */
 .legend-panel {
     width: 240px;
     background-color: #020617;
@@ -101,9 +188,8 @@ svg {
     width: 22px;
     height: 22px;
     border-radius: 6px;
-    border: 2px solid #020617;
-    flex-shrink: 0;
-    display: inline-block;
+    border: 2px solid #000000 !important;
+    display: block !important;
 }
 
 .legend-text {
@@ -111,63 +197,9 @@ svg {
     color: #94a3b8;
 }
 
-
-/* 🧱 1. ГЛОБАЛЬНЫЙ СЛОЙ СТЕН И КОРИДОРОВ */
-/* По умолчанию ВСЕ теги path на карте — это просто мертвый пол. 
-   Мышь полностью «пролетает» сквозь них, не ломая наведение комнат! */
-svg path {
-    fill: #f1f5f9 !important;       /* Серый пол коридоров */
-    stroke: #000000 !important;     /* Черные толстые стены */
-    stroke-width: 3px !important;
-    pointer-events: none !important; /* 💥 ГЛАВНАЯ МАГИЯ: отключаем реакцию на мышь для коридора */
-}
-
-/* 🏢 2. БАЗОВЫЙ СТИЛЬ ДЛЯ СТАНДАРТНЫХ КАБИНЕТОВ (Прямоугольники) */
-svg rect {
-    fill: #ffffff !important;       /* Белые аккуратные классы */
-    stroke: #000000 !important;     
-    stroke-width: 3px !important;
-    opacity: 1 !important;
-    pointer-events: auto !important; /* Включаем реакцию мыши */
-    transition: fill 0.15s ease !important;
-}
-
-
-/* 🆕 3. ИСПРАВЛЯЕМ КРИВЫЕ КАБИНЕТЫ, ЛЕСТНИЦЫ И ЛИФТЫ */
-/* Принудительно включаем белый цвет и РАЗРЕШАЕМ реагировать на мышь 
-   абсолютно всем элементам, у которых в ID нет слова corridor или walls! */
-svg rect, 
-svg path:not([id*="corridor"]):not([id*="walls"]):not([id^="Vector"]) {
-    fill: #ffffff !important;        /* Они гарантированно побелеют! */
-    pointer-events: auto !important; /* 💥 Они пробьют слой коридора и будут ловить мышь! */
-}
-
-
-/* 💥 4. ТОТАЛЬНОЕ ИДЕАЛЬНОЕ НАВЕДЕНИЕ СИНИМ ЦВЕТОМ */
-/* Теперь при наведении синеет абсолютно любая комната, независимо от ее формы в Figma! */
-svg rect:hover, 
-svg path:not([id*="corridor"]):not([id*="walls"]):not([id^="Vector"]):hover {
-    fill: #3b82f6 !important;       /* Сочный информационный синий цвет */
-    cursor: pointer;
-}
-
-
-/* 📍 ТОЧКИ QR-КОДОВ */
-svg circle {
-    fill: #64748b !important;
-    stroke: #000000 !important;
-    stroke-width: 2px !important;
-    r: 4.5px !important;
-    pointer-events: auto !important;
-}
-svg circle:hover {
-    fill: #3b82f6 !important;
-    stroke: #ffffff !important;
-}
-
-/* Квадратики в легенде (оставляем рабочими) */
-.color-classroom { background-color: #ffffff !important; border-color: #cbd5e1 !important; }
-.color-stairs { background-color: #3b82f6 !important; border-color: #2563eb !important; }
-.color-wc { background-color: #ffe4e6 !important; border-color: #fecdd3 !important; }
-.color-special { background-color: #fef3c7 !important; border-color: #fde68a !important; }
-.color-corridor { background-color: #f1f5f9 !important; border-color: #cbd5e1 !important; }
+/* Привязываем цвета квадратиков легенды к палитре карты */
+.color-classroom { background-color: #ffffff !important; }
+.color-stairs { background-color: #f3e8ff !important; }
+.color-wc { background-color: #ffe4e6 !important; }
+.color-special { background-color: #fef3c7 !important; }
+.color-corridor { background-color: #f1f5f9 !important; }
