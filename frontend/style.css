@@ -1,0 +1,219 @@
+/* ==========================================================================
+   🌐 1. ГЛОБАЛЬНЫЕ НАСТРОЙКИ ЭКРАНА И ФОНА
+   ========================================================================== */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: #0f172a; /* Глубокий темно-синий фон страницы */
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* ЛЕВАЯ ПАНЕЛЬ: Меню этажей */
+.sidebar {
+    width: 200px;
+    background-color: #020617;
+    color: white;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    border-right: 1px solid #1e293b;
+    flex-shrink: 0;
+}
+
+.sidebar h2 {
+    margin-top: 0;
+    font-size: 18px;
+    border-bottom: 1px solid #1e293b;
+    padding-bottom: 12px;
+}
+
+.floor-btn {
+    padding: 12px;
+    background-color: #0f172a;
+    color: #94a3b8;
+    border: 1px solid #1e293b;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+.floor-btn.active, .floor-btn:hover {
+    background-color: #3b82f6;
+    color: white;
+    border-color: #60a5fa;
+}
+
+/* По умолчанию намертво прячем все слои этажей */
+.floor-layer {
+    display: none;
+}
+
+/* Показываем ТОЛЬКО тот слой, у которого прямо сейчас есть класс active */
+.floor-layer.active {
+    display: block;
+}
+
+
+/* ЦЕНТРАЛЬНАЯ ПАНЕЛЬ: Контейнер для карты */
+.map-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    height: 100vh;
+}
+
+svg {
+    max-width: 90%;
+    max-height: 80vh;
+    width: auto;
+    height: auto;
+    background-color: #ffffff !important;
+    box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.4);
+    border-radius: 8px;
+    margin: auto 40px; 
+}
+
+/* ==========================================================================
+   🧱 2. ЖЕСТКИЕ ТОЛСТЫЕ ЧЕРНЫЕ СТЕНЫ ШКОЛЫ
+   ========================================================================== */
+svg * {
+    stroke: #000000 !important;     /* 💥 ЖЕЛЕЗНЫЕ ЧЕРНЫЕ СТЕНЫ */
+    stroke-width: 3px !important;   /* 💥 ТОЛСТЫЕ И ЧЕТКИЕ ЛИНИИ */
+    stroke-linejoin: round !important;
+    stroke-linecap: round !important;
+    paint-order: stroke fill !important;
+}
+
+/* Пол коридоров и улицы (Твои большие path) */
+svg path {
+    fill: #f1f5f9 !important;       /* Мягкий серый цвет коридоров */
+}
+
+/* Маленькие накладки дверей (Стираем им обводку, чтобы не было черных кубиков) */
+svg rect:not([id]) {
+    stroke: none !important;
+    cursor: pointer !important;
+    pointer-events: none !important;
+}
+
+/* Точки QR-кодов */
+svg circle {
+    fill: #64748b !important;
+    stroke: #000000 !important;
+    stroke-width: 2px !important;
+    r: 5px !important;
+    pointer-events: auto !important;
+}
+
+/* ==========================================================================
+   🎨 3. ЦВЕТОВОЕ ЗОНИРОВАНИЕ КАБИНЕТОВ ПО ЧИСЛОВЫМ ID
+   ========================================================================== */
+
+/* 🟢 БАЗОВЫЙ ЦВЕТ: Все стандартные учебные классы (Изначально чисто белые) */
+svg rect {
+    fill: #ffffff !important; 
+    pointer-events: auto !important;
+    transition: fill 0.15s ease !important;
+}
+
+/* 🟣 ЛЕСТНИЦЫ И ЛИФТЫ (Спокойный приглушенно-фиолетовый)
+   ⚠️ Впиши сюда через запятую числовые ID своих лестниц и лифтов, добавляя перед ними #\3 */
+#\32 1231, #\32 1232, #\32 1233, #\32 089, #\32 087, #\32 086, #\32 085, #\32 084, #\32 083, #\32 091, #\32 092, #\31 1231, #\31 1232, #\31 1233, #\31 125, #\31 099, #\31 096, #\31 095, #\31 094, #\31 093, #\31 100, #\31 102, #\33 1231, #\33 1232, #\33 1233, #\33 066, #\33 064, #\33 063, #\33 062, #\33 069, #\33 067 { 
+    fill: #f3e8ff !important; 
+    pointer-events: auto !important; /* Разрешаем им светиться! */
+}
+
+/* 🔴 САНУЗЛЫ / ТУАЛЕТЫ (Пастельно-розовый)
+   ⚠️ Впиши сюда через запятую числовые ID своих туалетов */
+#\32 066, #\32 065, #\32 067, #\32 064, #\32 057, #\32 055, #\32 056, #\32 031, #\32 033, #\32 0361, #\32 0351, #\32 043, #\32 045, #\32 063, #\32 060, #\32 059, #\32 058, #\32 061, #\32 062, #\31 074, #\31 076, #\31 077, #\31 075, #\31 069, #\31 068, #\31 070, #\31 071, #\31 072, #\31 073, #\31 066, #\31 067, #\31 065, #\33 045, #\33 044, #\33 043, #\33 046, #\33 038, #\33 037, #\33 039, #\33 042, #\33 041, #\33 040, #\33 035, #\33 034, #\33 036 { 
+    fill: #ffe4e6 !important; 
+}
+
+/* 🟡 СТОЛОВАЯ / СПОРТЗАЛ / БОЛЬШИЕ ЗАЛЫ (Золотисто-оранжевый)
+   ⚠️ Впиши сюда через запятую числовые ID больших особых помещений */
+#\31 105, #\32 028, #\32 047, #\33 400, #\33 300 { 
+    fill: #fef3c7 !important; 
+}
+
+/* ==========================================================================
+   💥 4. ИДЕАЛЬНАЯ СИНЯЯ ПОДСВЕТКА ДЛЯ ВСЕХ ТИПОВ КАБИНЕТОВ
+   ========================================================================== */
+/* Теперь при наведении мышки синеет АБСОЛЮТНО любой кабинет и лестница!
+   ⚠️ Скопируй сюда точно такой же список особых ID, как в блоках выше */
+
+/* 2. НАСТРОЙКА КОРЫДОРА (По-прежнему не мешает мышке) */
+/* Мы отключаем pointer-events только для фонового серого коридора */
+
+/* 3. УНИВЕРСАЛЬНАЯ ПОДВЕТКА ДЛЯ ВСЕГО БЕЗ ID! */
+/* Теперь АБСОЛЮТНО любая замкнутая фигура (и прямоугольник rect, и кривое перо path) 
+   при наведении мышки гарантированно и сочно загорится синим цветом! */
+svg *:hover,
+svg rect:hover,
+svg path:hover,
+svg circle:hover, 
+#\32 1231:hover, #\32 1232:hover, #\32 1233:hover, #\32 089:hover, #\32 087:hover, #\32 086:hover, #\32 085:hover, #\32 084:hover, #\32 083:hover, #\32 091:hover, #\32 092:hover
+#\32 066:hover, #\32 065:hover, #\32 067:hover, #\32 064:hover, #\32 057:hover, #\32 055:hover, #\32 056:hover, #\32 031:hover, #\32 033:hover, #\32 0361:hover, #\32 0351:hover, #\32 043:hover, #\32 045:hover, #\32 063:hover, #\32 060:hover, #\32 059:hover, #\32 058:hover, #\32 061:hover, #\32 062:hover 
+#\31 105:hover, #\32 028:hover, #\32 047:hover, #\33 400:hover, #\33 300:hover
+#\31 1231:hover, #\31 1232:hover, #\31 1233:hover, #\31 125:hover, #\31 099:hover, #\31 096:hover, #\31 095:hover, #\31 094:hover, #\31 093:hover, #\31 100:hover, #\31 102:hover, #\33 1231:hover, #\33 1232:hover, #\33 1233:hover, #\33 066:hover, #\33 064:hover, #\33 063:hover, #\33 062:hover, #\33 069:hover, #\33 067:hover 
+#\31 074:hover, #\31 076:hover, #\31 077:hover, #\31 075:hover, #\31 069:hover, #\31 068:hover, #\31 070:hover, #\31 071:hover, #\31 072:hover, #\31 073:hover, #\31 066:hover, #\31 067:hover, #\31 065:hover, #\33 045:hover, #\33 044:hover, #\33 043:hover, #\33 046:hover, #\33 038:hover, #\33 037:hover, #\33 039:hover, #\33 042:hover, #\33 041:hover, #\33 040:hover, #\33 035:hover, #\33 034:hover, #\33 036:hover {
+    fill: #1d4ed8 !important;   /* Мы взяли сочный, глубокий темно-синий цвет, чтобы он перебивал всё! */
+    cursor: pointer !important;
+}
+
+/* ==========================================================================
+   📊 5. ПРАВАЯ ПАНЕЛЬ: КРАСИВАЯ ЛЕГЕНДА С ЦВЕТАМИ
+   ========================================================================== */
+.legend-panel {
+    width: 240px;
+    background-color: #020617;
+    color: white;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    border-left: 1px solid #1e293b;
+    flex-shrink: 0;
+}
+
+.legend-panel h3 {
+    margin-top: 0;
+    font-size: 16px;
+    border-bottom: 1px solid #1e293b;
+    padding-bottom: 12px;
+    color: #f8fafc;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.legend-color {
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    border: 2px solid #000000 !important;
+    display: block !important;
+}
+
+.legend-text {
+    font-size: 14px;
+    color: #94a3b8;
+}
+
+/* Привязываем цвета квадратиков легенды к палитре карты */
+.color-classroom { background-color: #ffffff !important; }
+.color-stairs { background-color: #f3e8ff !important; }
+.color-wc { background-color: #ffe4e6 !important; }
+.color-special { background-color: #fef3c7 !important; }
+.color-corridor { background-color: #f1f5f9 !important; }
