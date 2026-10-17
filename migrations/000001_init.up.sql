@@ -10,7 +10,7 @@ CREATE TABLE school.schools (
 CREATE TABLE school.profiles (
     id UUID PRIMARY KEY,
     version BIGINT NOT NULL DEFAULT 1 CHECK(version>0),
-    login VARCHAR(100) NOT NULL CHECK(char_length(login) BETWEEN 8 AND 100),
+    login VARCHAR(100) UNIQUE NOT NULL CHECK(char_length(login) BETWEEN 8 AND 100),
     password VARCHAR(50) NOT NULL CHECK(char_length(password) BETWEEN 8 AND 50),
     age INTEGER NOT NULL CHECK(age>=0),
     role VARCHAR(50) NOT NULL CHECK(role IN ('ROOT', 'DIRECTOR', 'ADMIN', 'TEACHER', 'PARENT', 'STUDENT')),

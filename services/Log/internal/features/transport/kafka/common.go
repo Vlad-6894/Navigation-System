@@ -4,11 +4,11 @@ import (
 	log_domains "Log_service/internal/core/domains"
 	log_core_logger "Log_service/internal/core/logger"
 	log_core_kafka_transport "Log_service/internal/core/transport/kafka"
-	pkg_kafka_errors "Log_service/pkg/errors/kafka"
 	"context"
 	"encoding/json"
 	"errors"
 	"fmt"
+	pkg_kafka_errors "navigation-pkg/errors/kafka"
 	"sync"
 	"time"
 
@@ -106,7 +106,6 @@ func (c *LogKafkaConsumer) Start(
 				if err := c.Reader.CommitMessages(ctx, logBatch[commitNum].GetMessage()); err != nil {
 					c.log.Error("fail commit batch", zap.Error(err))
 				}
-
 				continue
 			}
 
