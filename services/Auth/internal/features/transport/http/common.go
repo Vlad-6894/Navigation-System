@@ -19,3 +19,13 @@ type ProfileResponseDTO struct {
 	Role     string    `json:"role"`
 	SchoolID int       `json:"school_id"`
 }
+
+type LoginProfileRequestDTO struct {
+	Login    string `json:"login"`
+	Password string `json:"password"`
+}
+
+type TokenPareResponse struct {
+	AccessToken  string `json:"access_token"`
+	RefreshToken string `json:"refresh_token"`
+}

@@ -1,4 +1,4 @@
-package log_core_redis
+package pkg_redis
 
 import (
 	"fmt"
@@ -7,24 +7,24 @@ import (
 	"github.com/kelseyhightower/envconfig"
 )
 
-type LogRedisConfig struct {
+type RedisConfig struct {
 	RedisHost     string        `envconfig:"HOST" required:"true"`
 	RedisPort     string        `envconfig:"PORT" required:"true"`
 	RedisPassword string        `envconfig:"PASSWORD" required:"true"`
 	RedisTimeout  time.Duration `envconfig:"TIMEOUT" required:"true"`
 }
 
-func NewRedisConfig() (LogRedisConfig, error) {
-	var config LogRedisConfig
+func NewRedisConfig() (RedisConfig, error) {
+	var config RedisConfig
 
-	if err := envconfig.Process("LOG_REDIS", &config); err != nil {
-		return LogRedisConfig{}, fmt.Errorf("fail to process redis config: %w", err)
+	if err := envconfig.Process("REDIS", &config); err != nil {
+		return RedisConfig{}, fmt.Errorf("fail to process redis config: %w", err)
 	}
 
 	return config, nil
 }
 
-func NewRedisConfigMust() LogRedisConfig {
+func NewRedisConfigMust() RedisConfig {
 	config, err := NewRedisConfig()
 	if err != nil {
 		panic(err)

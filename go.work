@@ -1,6 +1,7 @@
 go 1.25.12
 
 use (
+	./navigation_proto
 	./pkg
 	./services/Auth
 	./services/Geo

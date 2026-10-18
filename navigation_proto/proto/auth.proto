@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package auth;
+
+option go_package = "navigation_proto/gen/go/auth;authv1";
+
+service AuthService {
+    
+}

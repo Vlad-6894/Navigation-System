@@ -6,7 +6,8 @@ import (
 )
 
 type AuthService struct {
-	db AuthDatabase
+	db    AuthDatabase
+	cache AuthCache
 }
 
 type AuthDatabase interface {
@@ -14,10 +15,26 @@ type AuthDatabase interface {
 		ctx context.Context,
 		profile auth_domains.Profile,
 	) (auth_domains.Profile, error)
+
+	GetProfile(
+		ctx context.Context,
+		login string,
+	) (auth_domains.Profile, error)
 }
 
-func NewAuthService(db AuthDatabase) *AuthService {
+type AuthCache interface {
+	SaveRefresToken(
+		ctx context.Context,
+		refreshToken string,
+		userID string,
+		role string,
+		schoolID int,
+	) error
+}
+
+func NewAuthService(db AuthDatabase, cache AuthCache) *AuthService {
 	return &AuthService{
-		db: db,
+		db:    db,
+		cache: cache,
 	}
 }

@@ -1,4 +1,4 @@
-package log_core_redis
+package pkg_redis
 
 import (
 	"context"
@@ -19,7 +19,7 @@ type RedisClient struct {
 	timeout time.Duration
 }
 
-func NewRedisClient(config LogRedisConfig) (*RedisClient, error) {
+func NewRedisClient(config RedisConfig) (*RedisClient, error) {
 	redisAddr := fmt.Sprintf("%s:%s", config.RedisHost, config.RedisPort)
 
 	rdb := redis.NewClient(&redis.Options{
