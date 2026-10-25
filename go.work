@@ -5,5 +5,4 @@ use (
 	./pkg
 	./services/Auth
 	./services/Geo
-	./services/Log
 )
