@@ -26,7 +26,8 @@ type RefreshTokenClaims struct {
 }
 
 var (
-	envJwt = "JWT_SECRET"
+	envJwt    = "JWT_SECRET"
+	accessTTL = 30 * time.Minute
 )
 
 func GenerateTokensPare(
@@ -44,7 +45,7 @@ func GenerateTokensPare(
 		Role:     role,
 		SchoolID: schoolID,
 		RegisteredClaims: jwt.RegisteredClaims{
-			ExpiresAt: jwt.NewNumericDate(time.Now().Add(30 * time.Minute)),
+			ExpiresAt: jwt.NewNumericDate(time.Now().Add(accessTTL)),
 			IssuedAt:  jwt.NewNumericDate(time.Now()),
 		},
 	}
@@ -73,4 +74,32 @@ func GenerateTokensPare(
 	}
 
 	return tokenPair, nil, accessClaims
+}
+
+func GenerateAccessToken(
+	userID string,
+	role string,
+	schoolID int,
+) (string, error) {
+	secret := os.Getenv(envJwt)
+	if secret == "" {
+		return "", fmt.Errorf("secret key is empty!")
+	}
+
+	accessClaims := AccessTokenClaims{
+		UserID:   userID,
+		Role:     role,
+		SchoolID: schoolID,
+		RegisteredClaims: jwt.RegisteredClaims{
+			ExpiresAt: jwt.NewNumericDate(time.Now().Add(accessTTL)),
+			IssuedAt:  jwt.NewNumericDate(time.Now()),
+		},
+	}
+
+	accessToken, err := jwt.NewWithClaims(jwt.SigningMethodHS256, accessClaims).SignedString(secret)
+	if err != nil {
+		return "", fmt.Errorf("fail sign access token: %w", err)
+	}
+
+	return accessToken, nil
 }

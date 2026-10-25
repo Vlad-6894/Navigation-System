@@ -10,6 +10,7 @@ import (
 
 type ClientCacheRedis interface {
 	SetNX(ctx context.Context, key string, value interface{}, expiration time.Duration) *redis.BoolCmd
+	Get(ctx context.Context, key string) *redis.StringCmd
 	GetTimeout() time.Duration
 	Close()
 }

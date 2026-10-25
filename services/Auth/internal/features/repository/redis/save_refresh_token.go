@@ -38,7 +38,7 @@ func (r *AuthRedisRepository) SaveRefresToken(
 	}
 
 	if !success {
-		fmt.Errorf("fail SetNX: %w", auth_errors.ErrCreatedRefreshToken)
+		return fmt.Errorf("fail SetNX: %w", auth_errors.ErrCreatedRefreshToken)
 	}
 
 	return nil

@@ -23,6 +23,20 @@ type AuthService interface {
 		login string,
 		password string,
 	) (pkg_jwt.TokensPair, error)
+
+	DispetchToParent(
+		ctx context.Context,
+		names auth_domains.Names,
+		userID string,
+	) error
+
+	DispetchToStudent(
+		ctx context.Context,
+		names auth_domains.Names,
+		userID string,
+		classID int,
+		parentID int,
+	) error
 }
 
 func NewAuthHTTPTransport(

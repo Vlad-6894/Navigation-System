@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация профиля</title>
+    <link rel="stylesheet" href="register_style.css">
+    <script src="auth.js" defer></script>
+</head>
+<body>
+
+    <div class="auth-container" style="width: 460px;"> <!-- Чуть шире для 5 полей -->
+        <h2>Регистрация</h2>
+        <p class="subtitle">Заполни данные для создания аккаунта</p>
+        
+        <form action="https://localhost:8443/api/auth/register" method="POST">
+            <div class="input-group">
+                <label>Электронная почта (Логин)</label>
+                <input type="email" name="email" placeholder="Student_capusto" required>
+            </div>
+
+            <div class="input-group">
+                <label>Идентификатор школы</label>
+                <!-- Твой int64 school_id, который мы настроили в proto -->
+                <input type="number" name="school_id" placeholder="Например: 123" required>
+            </div>
+            
+            <div class="input-group">
+                <label>Пароль</label>
+                <input type="password" name="password" placeholder="Минимум 8 символов" required>
+            </div>
+
+            <div class="input-group">
+                <label>Кто ты? (Роль)</label>
+                <select name="role" required>
+                    <option value="" disabled selected>Выбери роль...</option>
+                    <option value="STUDENT">Ученик</option>
+                    <option value="TEACHER">Преподаватель</option>
+                    <option value="PARENT">Родитель</option>
+                    <option value="ADMIN">Администратор</option>
+                    <option value="DIRECTOR">Директор</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>Возраст</label>
+                <input type="number" name="age" min="6" max="100" placeholder="Возраст" required>
+            </div>
+            
+            <button type="submit" class="btn-primary">Создать профиль</button>
+        </form>
+        
+        <a href="welcome.html" class="back-link">← Вернуться на главную</a>
+    </div>
+
+</body>
+</html>

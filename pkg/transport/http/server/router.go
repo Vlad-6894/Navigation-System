@@ -15,6 +15,11 @@ type APIVersionRouter struct {
 	personRole PersonRole
 }
 
+const (
+	ApiVersion1 = "1"
+	Student     = "student"
+)
+
 func NewAPIVersionRouter(apiVersion ApiVersion, personRole PersonRole) *APIVersionRouter {
 	return &APIVersionRouter{
 		ServeMux:   http.NewServeMux(),

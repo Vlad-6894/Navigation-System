@@ -29,3 +29,23 @@ type TokenPareResponse struct {
 	AccessToken  string `json:"access_token"`
 	RefreshToken string `json:"refresh_token"`
 }
+
+type DispetchToParentRequestDTO struct {
+	ID         uuid.UUID `json:"id"`
+	FirstName  string    `json:"first_name"`
+	Surname    string    `json:"surname"`
+	MiddleName string    `json:"middle_name"`
+}
+
+type DispetchToStudentRequestDTO struct {
+	ID         uuid.UUID `json:"id"`
+	FirstName  string    `json:"first_name"`
+	Surname    string    `json:"surname"`
+	MiddleName string    `json:"middle_name"`
+	ClassID    int       `json:"class_id"`
+	ParentID   int       `json:"parent_id"`
+}
+
+type SuccessResponse struct {
+	IsSuccess string `json:"is_success"`
+}

@@ -1,28 +1,27 @@
 services:
 
-  log:
+  auth:
     build:
       context: ${PROJECT_ROOT}
-      dockerfile: ${PROJECT_ROOT}/services/Log/cmd/Dockerfile
-    container_name: log-service
+      dockerfile: ${PROJECT_ROOT}/services/Auth/cmd/Dockerfile
+    container_name: auth-service
     environment:
       - LOGGER_AUTH_LEVEL=${LOGGER_LEVEL}
       - LOGGER_AUTH_FOLDER=/app/out/logs/auth
-      - LOGGER_GEO_LEVEL=${LOGGER_LEVEL}
-      - LOGGER_GEO_FOLDER=/app/out/logs/geo
-      - LOGGER_ROOM_LEVEL=${LOGGER_LEVEL}
-      - LOGGER_ROOM_FOLDER=/app/out/logs/rooms
-      - LOG_REDIS_HOST=navigation-redis
-      - LOG_REDIS_PORT=6379
-      - LOG_REDIS_PASSWORD=${REDIS_PASSWORD}
-      - LOG_REDIS_TIMEOUT=${REDIS_TIMEOUT}
-      - LOG_KAFKA_CONSUMER_ADDRESS=${KAFKA_ADDRESS}
-      - LOG_KAFKA_CONSUMER_AUTH_TOPIC=${LOG_AUTH_TOPIC}
-      - LOG_KAFKA_CONSUMER_AUTH_GROUP_ID=${LOG_AUTH_GROUP_ID}
-      - LOG_KAFKA_CONSUMER_GEO_TOPIC=${LOG_AUTH_TOPIC}
-      - LOG_KAFKA_CONSUMER_GEO_GROUP_ID=${LOG_AUTH_GROUP_ID}
-      - LOG_KAFKA_CONSUMER_ROOMS_TOPIC=${LOG_AUTH_TOPIC}
-      - LOG_KAFKA_CONSUMER_ROOMS_GROUP_ID=${LOG_AUTH_GROUP_ID}
+      - REDIS_HOST=navigation-redis
+      - REDIS_PORT=6379
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+      - POSTGRES_HOST=navigation-postgres-db
+      - POSTGRES_PORT=5432
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_TIMEOUT=${POSTGRES_TIMEOUT}
+      - GRPC_SERVER_PORT=7071
+      - GRPC_SERVER_SHUTDOWN_TIMEOUT=${GRPC_SERVER_SHUTDOWN_TIMEOUT}
+      - HTTP_SERVER_PORT=7070
+      - HTTP_SERVER_SHUTDOWN_TIMEOUT=${HTTP_SERVER_SHUTDOWN_TIMEOUT}
+      - JWT_SECRET=${JWT_SECRET}
     volumes:
       - ${PROJECT_ROOT}/out/logs:/app/out/logs
     ports:

@@ -20,6 +20,61 @@ type AuthDatabase interface {
 		ctx context.Context,
 		login string,
 	) (auth_domains.Profile, error)
+
+	DispetchRoomToDirector(
+		ctx context.Context,
+		userID string,
+		roomID int,
+	) error
+
+	DispetchRoomToAdmin(
+		ctx context.Context,
+		userID string,
+		roomID int,
+	) error
+
+	DispetchRoomToTeacher(
+		ctx context.Context,
+		userID string,
+		roomID int,
+	) error
+
+	DispetchClassToTeacher(
+		ctx context.Context,
+		userID string,
+		classID int,
+	) error
+
+	DispetchRoomToClass(
+		ctx context.Context,
+		classID int,
+		roomID int,
+	) error
+
+	DispetchClassToStudent(
+		ctx context.Context,
+		userID string,
+		classID int,
+	) error
+
+	UntieClassFromTeacher(
+		ctx context.Context,
+		classID int,
+	) error
+
+	DispetchToParent(
+		ctx context.Context,
+		names auth_domains.Names,
+		userID string,
+	) error
+
+	DispetchToStudent(
+		ctx context.Context,
+		names auth_domains.Names,
+		userID string,
+		classID int,
+		parentID int,
+	) error
 }
 
 type AuthCache interface {
@@ -30,6 +85,11 @@ type AuthCache interface {
 		role string,
 		schoolID int,
 	) error
+
+	FindRefrshToken(
+		ctx context.Context,
+		refreshToken string,
+	) (string, string, int, error)
 }
 
 func NewAuthService(db AuthDatabase, cache AuthCache) *AuthService {

@@ -5,5 +5,52 @@ package auth;
 option go_package = "navigation_proto/gen/go/auth;authv1";
 
 service AuthService {
-    
+
+    rpc UpdateAccess(UpdateAccessRequestMessage) returns (UpdateAccessResponseMessage);
+
+    rpc DispetchRoomToDirector(DispetchRoomRequestMessage) returns (ResponseMessage);
+
+    rpc DispetchRoomToAdmin(DispetchRoomRequestMessage) returns (ResponseMessage);
+
+    rpc DispetchRoomToTeacher(DispetchRoomRequestMessage) returns (ResponseMessage);
+
+    rpc DispetchClassToTeacher(DispetchClassRequestMessage) returns (ResponseMessage);
+
+    rpc DispetchRoomToClass(DispetchRoomToClassRequestMessage) returns (ResponseMessage);
+
+    rpc DispetchClassToStudent(DispetchClassRequestMessage) returns (ResponseMessage);
+
+    rpc UntieClassFromTeacher(UntieClassRequestMessage) returns (ResponseMessage);
+}
+
+message UpdateAccessRequestMessage {
+    string refresh_token = 1;
+}
+
+message UpdateAccessResponseMessage {
+    string access_token = 1;
+}
+
+message DispetchRoomRequestMessage {
+    string user_id = 1;
+    int64 room_id = 2;
+}
+
+message ResponseMessage {
+    bool is_success = 1;
+    string error = 2;
+}
+
+message DispetchClassRequestMessage {
+    string user_id = 1;
+    int64 class_id = 2;
+}
+
+message DispetchRoomToClassRequestMessage {
+    int64 class_id = 1;
+    int64 room_id = 2;
+}
+
+message UntieClassRequestMessage {
+    int64 class_id = 1;
 }
